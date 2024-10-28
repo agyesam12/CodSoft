@@ -67,3 +67,41 @@ def signout(request):
         messages.success(request, f"Logged out successfully ... ")
         return redirect("home")
 
+
+class CreateTodo(LoginRequiredMixin,CreateView):
+    model = Todo
+    fields = ['title','description','is_done']
+    template_name = 'add_todo.html'
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_name'] = 'add_todo'
+        context['list_name'] = 'todolists'
+        return context
+    
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
+
+    def get_success_url(self):
+        messages.success(self.request, f"Todo added successfully by {self.request.user.username}")
+        return reverse_lazy("ViewTodos")
+
+class ViewTodos(LoginRequiredMixin, ListView):
+    model = Todo
+    context_object_name = 'todos'
+    template_name = 'view_todo.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_name'] = 'todolists'
+        context['list_name'] = 'todolists'
+        return context
+
+    def get_queryset(self):
+        return Todo.objects.filter(user=self.request.user, created_at__lt=timezone.now()).order_by('created_at')
+
+
