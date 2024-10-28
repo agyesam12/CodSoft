@@ -27,171 +27,44 @@ body {
 }
 
 /* Card styles */
-.thumbnail {
-  width: 100%;
-  height: 300px;
-  box-shadow: -1px -3px 5px -2px;
-  padding: 10px;
-}
-
-.profile-card, .signup-card, .signin-card {
-  background-color: #333;
-  color: #fff;
+.view-todos-card {
+  background-color: #fff;
   border-radius: 10px;
-  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.profile-card:hover, .signup-card:hover, .signin-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+.view-todos-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
 }
 
-.profile-image img, .signup-card img, .signin-card img {
-  width: 100%;
-  height: auto;
-  border-bottom: 5px solid #ffeb3b;
+.view-todos-card-header {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  font-size: 18px;
 }
 
-.profile-info, .signup-card .card-body, .signin-card .card-body {
+.view-todos-card-body {
   padding: 20px;
-  text-align: center;
-}
-
-.profile-info h3, .signup-card h2, .signin-card h2 {
-  margin-bottom: 10px;
-  font-size: 24px;
-}
-
-.profile-info p, .signup-card .form-group, .signin-card .form-group {
-  margin-bottom: 5px;
   font-size: 16px;
 }
 
-.social-icons {
-  margin-top: 15px;
+.view-todos-card-footer {
+  padding: 10px;
+  text-align: right;
 }
 
-.social-icons a {
-  color: #ffeb3b;
-  margin: 0 10px;
+.view-todos-card-footer a {
+  color: #ff0000;
   font-size: 20px;
   transition: color 0.3s ease;
 }
 
-.social-icons a:hover {
-  color: #fff;
-}
-
-/* Responsive design */
-@media (max-width: 768px) {
-  .profile-card, .signup-card, .signin-card {
-      margin-bottom: 20px;
-  }
-}
-
-@media (max-width: 480px) {
-  .profile-info h3, .signup-card h2, .signin-card h2 {
-      font-size: 20px;
-  }
-  .profile-info p, .signup-card .form-group, .signin-card .form-group {
-      font-size: 14px;
-  }
-}
-
-.mydivstyle {
-  background-color: rgba(255, 255, 255, 0.8);
-  padding: 20px;
-  border-radius: 10px;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.mydivstyle:hover {
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
-  transform: translateY(-10px);
-}
-
-h2, h4 {
-  color: #fff;
-}
-
-p {
-  color: #333;
-}
-
-form .form-control {
-  width: 100%;
-  padding: 0.75rem;
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
-  background-clip: padding-box;
-  border: 1px solid #ced4da;
-  border-radius: 0.25rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-}
-
-form .form-group {
-  margin-bottom: 1rem;
-}
-
-form .form-control::placeholder {
-  color: #6c757d;
-  opacity: 1;
-}
-
-form .form-control:focus {
-  color: #495057;
-  background-color: #fff;
-  border-color: #80bdff;
-  outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-}
-
-form label {
-  display: inline-block;
-  margin-bottom: 0.5rem;
-  color: #fff;
-}
-
-.amisty {
-  color: #fff;
-}
-
-.chat-card {
-  background-color: #f8f9fa;
-  border-radius: 10px;
-  overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  margin-bottom: 20px;
-  position: relative;
-}
-
-.chat-card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-}
-
-.chat-card-header {
-  background-color: #343a40;
-  color: #fff;
-  padding: 10px;
-  font-size: 18px;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.chat-card-body {
-  padding: 15px;
-  color: #495057;
-  background: linear-gradient(45deg, #e9ecef, #f8f9fa);
-}
-
-.chat-card-footer {
-  background-color: #e9ecef;
-  padding: 10px;
-  text-align: right;
+.view-todos-card-footer a:hover {
+  color: #ff6666;
 }
