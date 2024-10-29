@@ -70,7 +70,7 @@ def signout(request):
 
 class CreateTodo(LoginRequiredMixin,CreateView):
     model = Todo
-    fields = ['title','description','is_done','is_due']
+    fields = ['title','description','is_done']
     template_name = 'add_todo.html'
 
     def get_context_data(self,**kwargs):
