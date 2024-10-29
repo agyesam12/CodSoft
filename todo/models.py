@@ -101,7 +101,7 @@ class Todo(models.Model):
     description = models.TextField(null=True, blank=True)
     is_done = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
-    is_due = models.DateTimeField(auto_now_add=True, null=True)
+    
 
     def __str__(self):
         return f"{self.title}"
