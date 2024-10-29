@@ -8,7 +8,7 @@
     <div class="col-lg-12">
       {% for todo in todos %}
       <a href="#">
-        <div class="view-todos-card thumbnail">
+        <div class="view-todos-card thumbnail" style="margin-bottom: 20px;">
           <div class="view-todos-card-header">{{ todo.title }}</div>
           <div class="view-todos-card-body">
             <p>Status: {{ todo.is_done }}</p>
@@ -19,7 +19,7 @@
                 No description for this todo
               {% endif %}
             </p>
-            <p>Due Date: {{ todo.is_due }}</p>
+            <p class="due-date" data-due-date="{{ todo.is_due }}">Due Date: {{ todo.is_due }}</p>
           </div>
           <div class="view-todos-card-footer">
             <a onclick="return confirm('Are you sure you want to delete this todo?')" href="#">
@@ -35,4 +35,23 @@
     </div>
   </div>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  const dueDates = document.querySelectorAll('.due-date');
+  dueDates.forEach(function(dueDate) {
+    const dueDateValue = new Date(dueDate.getAttribute('data-due-date'));
+    const today = new Date();
+    const timeDiff = dueDateValue - today;
+    const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+
+    // Calculate the percentage of time remaining
+    const totalDays = (dueDateValue - new Date(today.getFullYear(), today.getMonth(), today.getDate() - 16)) / (1000 * 3600 * 24);
+    const percentage = Math.max(0, Math.min(100, (daysDiff / totalDays) * 100));
+
+    // Set the background color based on the percentage
+    dueDate.style.background = `linear-gradient(to right, red ${percentage}%, green ${percentage}%)`;
+  });
+});
+</script>
 {% endblock %}
