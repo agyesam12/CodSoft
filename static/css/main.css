@@ -143,4 +143,50 @@ body {
   padding: 0;
 }
 
+.delete-title {
+  color: #ffffff; /* White color */
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.delete-text {
+  color: #ffffff; /* White color */
+  font-size: 18px;
+}
+
+.success-card {
+  background-color: #28a745; /* Green background */
+  color: #ffffff; /* White text */
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.success-card .card-title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.success-card .card-text {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+.success-card .btn-primary {
+  background-color: #ffffff; /* White button */
+  color: #28a745; /* Green text */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.success-card .btn-primary:hover {
+  background-color: #e9ecef; /* Light grey on hover */
+}
+
+
+
 /* Rain animation */
