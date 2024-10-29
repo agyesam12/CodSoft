@@ -189,4 +189,24 @@ body {
 
 
 
+.mydivstyle {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mydivstyle:hover {
+  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+  transform: translateY(-10px);
+}
+
+h2,h4 {
+  color: #fff;
+}
+
+p {
+  color: #333;
+}
+
 /* Rain animation */
