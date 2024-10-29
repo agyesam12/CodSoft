@@ -7,7 +7,7 @@ from .models import User
 
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
-from .models import User
+from .models import User,Todo
 
 class RegisterUserForm(UserCreationForm):
     class Meta:
@@ -21,3 +21,20 @@ class RegisterUserForm(UserCreationForm):
             'password1': forms.PasswordInput(attrs={'placeholder': 'Please enter your password'}),
             'password2': forms.PasswordInput(attrs={'placeholder': 'Please confirm your password'}),
         }
+
+
+class DateInput(forms.DateInput):
+    input_type = 'date'
+
+class CreateTodoForm(forms.ModelForm):
+    class Meta:
+        model = Todo
+        widgets = {'is_due': DateInput()}
+        fields = ['title','description','is_done', 'is_due']
+
+
+class UpdateTodoForm(forms.ModelForm):
+    class Meta:
+        model = Todo
+        widgets = {'is_due': DateInput()}
+        fields = ['title','description','is_done', 'is_due']
