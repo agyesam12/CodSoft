@@ -21,7 +21,7 @@
                 </div>
             </a>
             {% else %}
-            <a onclick="confirm('Are you sure you want to open this page?');" href="#">
+            <a onclick="confirm('Are you sure you want to open this page?');" href="{% url 'signin' %}">
                 <div class="card thumbnail mydivstyle">
                     <img style="width:140px;" class="card-img-top" src="{% static 'images/todolist.jpeg' %}" alt="Todos image">
                     <div class="card-body">
@@ -45,7 +45,7 @@
                 </div>
             </a>
             {% else %}
-            <a onclick="confirm('Are you sure you want to open this page?');" href="#">
+            <a onclick="confirm('Are you sure you want to open this page?');" href="{% url 'signin' %}">
                 <div class="card thumbnail mydivstyle">
                     <img style="width:140px;" class="card-img-top" src="#" alt="Group Chat image">
                     <div class="card-body">
