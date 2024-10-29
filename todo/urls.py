@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_view
 from . import views
-from .views import CreateTodo, ViewTodos
+from .views import CreateTodo, ViewTodos,UpdateTodo
 
 
 urlpatterns = [
@@ -12,5 +12,6 @@ urlpatterns = [
     path('signup/', views.signup, name='signup'),
     path('signout/', views.signout, name='signout'),
     path('CreateTodo/', CreateTodo.as_view(), name='CreateTodo'),
-    path('Viewtodos/', ViewTodos.as_view(), name='ViewTodos')
+    path('Viewtodos/', ViewTodos.as_view(), name='ViewTodos'),
+     path('UpdateTodo/<str:pk>',UpdateTodo.as_view(), name='UpdateTodo'),
 ]
