@@ -135,5 +135,17 @@ class UpdateTodo(LoginRequiredMixin, UpdateView):
         return super().form_valid(form)
 
 
+class DeleteTodo(LoginRequiredMixin,DeleteView):
+    template_name = 'delete_todo.html'
+    model = Todo
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_name'] = 'delete_todos'
+        context['list_name'] = 'todolists'
+        return context
+
+    def get_success_url(self):
+        messages.success(self.request, f"Todo deleted successfully by {self.request.user.username}")
+        return reverse_lazy("ViewTodos")
 
