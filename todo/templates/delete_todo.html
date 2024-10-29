@@ -4,9 +4,9 @@
 {% block content %}
 <div class="container mt-5">
     <div class="card">
-        <div class="card-body">
-            <h5 class="card-title" style="color:white,font-size:22px">Delete Todo</h5>
-            <p class="card-text amisty" style="color:white,font-size:22px">Are you sure you want to delete this todo item?</p>
+        <div class="card-body" style="background-color: #444; color: #fff;">
+            <h5 class="card-title" style="color: #ffffff; font-size: 22px; font-weight: bold;">Delete Todo</h5>
+            <p class="card-text" style="color: #ffffff; font-size: 18px;">Are you sure you want to delete this todo item?</p>
             <form method="post" action="{% url 'DeleteTodo' todo.id %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Yes, Delete</button>
