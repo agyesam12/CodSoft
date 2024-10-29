@@ -11,7 +11,7 @@
         <div class="view-todos-card thumbnail">
           <div class="view-todos-card-header">{{ todo.title }}</div>
           <div class="view-todos-card-body">
-            <p>{{ todo.is_done }}</p>
+            <p>Status: {{ todo.is_done }}</p>
             <p>
               {% if todo.description %}
                 {{ todo.description }}
@@ -19,6 +19,7 @@
                 No description for this todo
               {% endif %}
             </p>
+            <p>Due Date: {{ todo.is_due }}</p>
           </div>
           <div class="view-todos-card-footer">
             <a onclick="return confirm('Are you sure you want to delete this todo?')" href="#">
