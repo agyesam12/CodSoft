@@ -42,6 +42,7 @@ form label {
   border-radius: 10px;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 20px; /* Added margin-bottom to separate cards */
 }
 
 .view-todos-card:hover, .profile-card:hover, .signup-card:hover, .signin-card:hover {
@@ -70,6 +71,15 @@ form label {
   background-color: #e9ecef;
   padding: 10px;
   text-align: right;
+}
+
+/* Due date highlighting */
+.due-date {
+  font-weight: bold;
+  padding: 5px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+  margin-top: 10px; /* Added margin-top for spacing */
 }
 
 /* Responsive design */
