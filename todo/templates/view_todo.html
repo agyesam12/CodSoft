@@ -25,7 +25,7 @@
             </div>
           </div>
           <div class="view-todos-card-footer">
-            <a onclick="return confirm('Are you sure you want to delete this todo?')" href="#">
+            <a onclick="return alert('We are processing your request')" href="{% url 'DeleteTodo' todo.id %}">
               <i class="fa fa-trash fa-2x"></i>
             </a>
             <a href="{% url 'UpdateTodo' todo.id %}">
