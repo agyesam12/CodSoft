@@ -101,9 +101,9 @@ form label {
 form label {
   display: block; /* Ensures labels are displayed as block elements */
   margin-bottom: 0.5rem; /* Adds space below each label */
-  color: #333; /* Adjust color as needed */
+  color: #f30909; /* Adjust color as needed */
   font-weight: bold; /* Makes the labels bold */
-  font-size: 1rem; /* Adjusts the font size */
+  font-size: 22px; /* Adjusts the font size */
 }
 /* Progress Tracker Styles */
 .progress-tracker {
@@ -144,13 +144,3 @@ body {
 }
 
 /* Rain animation */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background: url('/static/images/bird.gif') repeat;
-  z-index: -1;
-  opacity: 0.5;
-}
