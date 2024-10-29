@@ -117,15 +117,15 @@ class UpdateTodo(LoginRequiredMixin, UpdateView):
         return context
 
     def get_success_url(self):
-        messages.success(self.request, f"Todo updated successfully by {request.user.username}")
+        messages.success(self.request, f"Todo updated successfully by {self.request.user.username}")
         return reverse_lazy('ViewTodos')
     
     def get_object(self, queryset=None):
         try:
-           return Todo.objects.get(user=self.request.user)
+            return Todo.objects.get(user=self.request.user, is_done=False, pk=self.kwargs['pk'])
         except Todo.DoesNotExist:
-            Todo.objects.create(user=self.request.user)
-            return Todo.objects.get(user=self.request.user)
+            return None
+
 
 
     def form_valid(self, form):
