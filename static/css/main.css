@@ -87,3 +87,11 @@ form label {
       font-size: 14px;
   }
 }
+
+form label {
+  display: block; /* Ensures labels are displayed as block elements */
+  margin-bottom: 0.5rem; /* Adds space below each label */
+  color: #333; /* Adjust color as needed */
+  font-weight: bold; /* Makes the labels bold */
+  font-size: 1rem; /* Adjusts the font size */
+}
