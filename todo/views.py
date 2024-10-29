@@ -147,5 +147,14 @@ class DeleteTodo(LoginRequiredMixin,DeleteView):
 
     def get_success_url(self):
         messages.success(self.request, f"Todo deleted successfully by {self.request.user.username}")
-        return reverse_lazy("ViewTodos")
+        return reverse_lazy("DeleteTodoSuccessPage")
+
+
+
+class DeleteTodoSuccessPage(LoginRequiredMixin,View):
+    template_name = 'delete_todo_sucess_page.html'
+
+    def get(self, request):
+        return render(request, self.template_name)
+
 
