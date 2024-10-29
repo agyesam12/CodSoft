@@ -1,354 +1,89 @@
-.thumbnail{
-    width:100%;
-    height:300px;
-    box-shadow:hsl(hue, saturation, lightness);
-    -webkit-box-shadow:-1px -3px 5px -2px;
-    -moz-box-shadow:-1px -3px 5px -2px;
-    box-shadow: -1px -3px 5px -2px;
-    padding-bottom: 10px;
-    padding-top: 10px;
-    padding-left: 10px;
-  }
-  body {
-    font-family: Arial, sans-serif;
-    background: url('/static/images/bird.gif') repeat;
-    color: #333;
-    margin: 0;
-    padding: 0;
-  }
-
-  /* Rain animation */
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* General form styles */
+form .form-control {
   width: 100%;
-  height: 100vh;
-  background: url('/static/images/bird.gif' ) repeat;
-  z-index: -1;
-  opacity: 0.5;
+  padding: 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #495057;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid #ced4da;
+  border-radius: 0.25rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-/* Card styles */
-.profile-card, .signup-card, .signin-card {
-    background-color: #333;
-    color: #fff;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .profile-card:hover, .signup-card:hover, .signin-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
-  }
-  
-  .profile-image img, .signup-card img, .signin-card img {
-    width: 100%;
-    height: auto;
-    border-bottom: 5px solid #ffeb3b;
-  }
-  
-  .profile-info, .signup-card .card-body, .signin-card .card-body {
-    padding: 20px;
-    text-align: center;
-  }
-  
-  .profile-info h3, .signup-card h2, .signin-card h2 {
-    margin-bottom: 10px;
-    font-size: 24px;
-  }
-  
-  .profile-info p, .signup-card .form-group, .signin-card .form-group {
-    margin-bottom: 5px;
-    font-size: 16px;
-  }
-  
-  .social-icons {
-    margin-top: 15px;
-  }
-  
-  .social-icons a {
-    color: #ffeb3b;
-    margin: 0 10px;
-    font-size: 20px;
-    transition: color 0.3s ease;
-  }
-  
-  .social-icons a:hover {
-    color: #fff;
-  }
-  
-  /* Responsive design */
-  @media (max-width: 768px) {
-    .profile-card, .signup-card, .signin-card {
+form .form-group {
+  margin-bottom: 1rem;
+}
+
+form .form-control::placeholder {
+  color: #6c757d;
+  opacity: 1;
+}
+
+form .form-control:focus {
+  color: #495057;
+  background-color: #fff;
+  border-color: #80bdff;
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+form label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+/* Card styles for todos */
+.view-todos-card, .profile-card, .signup-card, .signin-card {
+  background-color: #333;
+  color: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.view-todos-card:hover, .profile-card:hover, .signup-card:hover, .signin-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.view-todos-card-header, .chat-card-header {
+  background-color: #343a40;
+  color: #fff;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.view-todos-card-body, .chat-card-body {
+  padding: 15px;
+  color: #495057;
+  background: linear-gradient(45deg, #e9ecef, #f8f9fa);
+}
+
+.view-todos-card-footer, .chat-card-footer {
+  background-color: #e9ecef;
+  padding: 10px;
+  text-align: right;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .view-todos-card, .profile-card, .signup-card, .signin-card {
       margin-bottom: 20px;
-    }
   }
-  
-  @media (max-width: 480px) {
-    .profile-info h3, .signup-card h2, .signin-card h2 {
+}
+
+@media (max-width: 480px) {
+  .view-todos-card-header, .profile-info h3, .signup-card h2, .signin-card h2 {
       font-size: 20px;
-    }
-    .profile-info p, .signup-card .form-group, .signin-card .form-group {
+  }
+  .view-todos-card-body, .profile-info p, .signup-card .form-group, .signin-card .form-group {
       font-size: 14px;
-    }
   }
-  
-  
-  .mydivstyle {
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 20px;
-    border-radius: 10px;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .mydivstyle:hover {
-    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
-    transform: translateY(-10px);
-  }
-  
-  h2,h4 {
-    color: #fff;
-  }
-  
-  p {
-    color: #333;
-  }
-  
-  form .form-control {
-    width: 100%;
-    padding: 0.75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: 0.25rem;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  }
-  form .form-group {
-    margin-bottom: 1rem;
-  }
-  
-  
-  form .form-control::placeholder {
-    color: #6c757d;
-    opacity: 1;
-  }
-  
-  form .form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
-  }
-  
-  form label {
-    display: inline-block;
-    margin-bottom: 0.5rem;
-    color: #fff;
-  }
-   .amisty{
-    color: #fff;
-  }
-
-  .amisty{
-    color: #fff;
-  }
-
-  .chat-card {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin-bottom: 20px;
-    position: relative;
-  }
-  
-  .chat-card:hover {
-    transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  }
-  
-  .chat-card-header {
-    background-color: #343a40;
-    color: #fff;
-    padding: 10px;
-    font-size: 18px;
-    font-weight: bold;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .chat-card-body {
-    padding: 15px;
-    color: #495057;
-    background: linear-gradient(45deg, #e9ecef, #f8f9fa);
-  }
-  
-  .chat-card-footer {
-    background-color: #e9ecef;
-    padding: 10px;
-    text-align: right;
-  }
-  
-  .chat-card-footer a {
-    color: #dc3545;
-    font-size: 20px;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .chat-card-footer a:hover {
-    color: #c82333;
-    transform: scale(1.1);
-  }
-  
-  /* Additional effects */
-  .chat-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.1);
-    pointer-events: none;
-    transition: opacity 0.3s ease;
-  }
-  
-  .chat-card:hover::before {
-    opacity: 0.3;
-  }
-  
-  .chat-card-header::after {
-    content: '';
-    display: block;
-    width: 50px;
-    height: 5px;
-    background: #ffc107;
-    margin-top: 5px;
-    border-radius: 5px;
-  }
-  
-  
-  /* New styles for the update password page */
-  /* New styles for the update password page */
-  .update-password-form {
-    background-color: #f8f9fa;
-    border-radius: 10px;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .update-password-form:hover {
-    transform: scale(1.02);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-  }
-  
-  .update-password-form .button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .update-password-form .button:hover {
-    background-color: #0056b3;
-    transform: scale(1.05);
-  }
-  
-  .update-password-form .btn-danger {
-    margin-top: 15px;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .update-password-form .btn-danger:hover {
-    background-color: #c82333;
-    transform: scale(1.05);
-  }
-  
-  /* Additional effects for form fields */
-  .update-password-form input[type="password"] {
-    border: 1px solid #ced4da;
-    border-radius: 5px;
-    padding: 10px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .update-password-form input[type="password"]:focus {
-    border-color: #80bdff;
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  }
-  
-  
-.notifications-container {
-    margin-top: 50px;
-  }
-  
-  .notifications-title {
-    font-size: 2rem;
-    color: #35ee10;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: 30px;
-  }
-  
-  .notifications-column {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .notification-link {
-    text-decoration: none;
-  }
-  
-  .notification-card {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 10px;
-    overflow: hidden;
-  }
-  
-  .notification-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  }
-  
-  .notification-header, .notification-type {
-    background-color: #f8f9fa;
-    padding: 10px;
-    font-weight: bold;
-  }
-  
-  .notification-body {
-    padding: 15px;
-    background-color: #fff;
-  }
-  
-  .notification-footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 10px;
-    background-color: #f8f9fa;
-  }
-  
-  .notification-date {
-    color: #fff;
-    background-color: #dc3545;
-    padding: 5px 10px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .notification-date:hover {
-    background-color: #c82333;
-  }
-  
-  
+}
