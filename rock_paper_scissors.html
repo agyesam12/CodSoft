@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors Game</title>
+    <style>
+        .btn {
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 5px;
+            background-size: cover;
+            background-position: center;
+            width: 100px;
+            height: 100px;
+        }
+
+        .btn-rock {
+            background-image: url('rock.jpeg');
+        }
+
+        .btn-rock:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-paper {
+            background-image: url('paper.jpeg');
+        }
+
+        .btn-paper:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-scissors {
+            background-image: url('scissors.jpeg');
+        }
+
+        .btn-scissors:hover {
+            transform: scale(1.1);
+        }
+
+        .btn-reset {
+            background-color: red;
+            color: white;
+            display: none; /* Initially hide the button */
+            width: 150px;
+            padding: 10px;
+            font-size: 14px;
+        }
+
+        .btn-reset:hover {
+            background-color: darkred;
+            transform: scale(1.1);
+        }
+
+        #scoreboard {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+        .amisty{
+            width:120px;
+            height:40px;
+        }
+    </style>
+</head>
+<body>
+    <button class="btn btn-rock" onclick="computerMoves(); playGame('Rock');"></button>
+    <button class="btn btn-paper" onclick="computerMoves(); playGame('Paper');"></button>
+    <button class="btn btn-scissors" onclick="computerMoves(); playGame('Scissors');"></button>
+    <p id="game-results">Results:</p>
+    <div id="scoreboard">
+        <p>Wins: <span id="wins">0</span></p>
+        <p>Ties: <span id="ties">0</span></p>
+        <p>Losses: <span id="losses">0</span></p>
+        <button class="btn btn-reset amisty" id="reset-button" onclick="confirmResetScores();">Reset Score</button>
+    </div>
+
+    <script type="text/javascript">
+        let computerMove = "";
+        let result = "";
+        let score = {
+            'wins': localStorage.getItem('wins') ? parseInt(localStorage.getItem('wins')) : 0,
+            'losses': localStorage.getItem('losses') ? parseInt(localStorage.getItem('losses')) : 0,
+            'ties': localStorage.getItem('ties') ? parseInt(localStorage.getItem('ties')) : 0
+        };
+
+        document.getElementById('wins').textContent = score.wins;
+        document.getElementById('ties').textContent = score.ties;
+        document.getElementById('losses').textContent = score.losses;
+
+        function computerMoves() {
+            const randomNumber = Math.random();
+            if (randomNumber >= 0 && randomNumber < 1 / 3) {
+                computerMove = "Rock";
+            } else if (randomNumber >= 1 / 3 && randomNumber < 2 / 3) {
+                computerMove = "Paper";
+            } else if (randomNumber >= 2 / 3 && randomNumber < 1) {
+                computerMove = "Scissors";
+            }
+        }
+
+        function playGame(playerMove) {
+            if (playerMove === "Rock") {
+                if (computerMove == "Rock") {
+                    result = "tie";
+                } else if (computerMove == "Paper") {
+                    result = "you lose";
+                } else if (computerMove == "Scissors") {
+                    result = "you win";
+                }
+            } else if (playerMove == "Paper") {
+                if (computerMove == "Rock") {
+                    result = "you win";
+                } else if (computerMove == "Paper") {
+                    result = "tie";
+                } else if (computerMove == "Scissors") {
+                    result = "you lose";
+                }
+            } else if (playerMove === "Scissors") {
+                if (computerMove == "Rock") {
+                    result = "you lose";
+                } else if (computerMove == "Paper") {
+                    result = "you win";
+                } else if (computerMove == "Scissors") {
+                    result = "tie";
+                }
+            }
+
+            if (result == "you win") {
+                score.wins += 1;
+            } else if (result == "tie") {
+                score.ties += 1;
+            } else if (result == "you lose") {
+                score.losses += 1;
+            }
+
+            localStorage.setItem('wins', score.wins);
+            localStorage.setItem('ties', score.ties);
+            localStorage.setItem('losses', score.losses);
+
+            document.getElementById('wins').textContent = score.wins;
+            document.getElementById('ties').textContent = score.ties;
+            document.getElementById('losses').textContent = score.losses;
+
+            document.getElementById('game-results').textContent = `You picked: ${playerMove}, computer picked: ${computerMove}. Result: ${result}`;
+
+            // Unhide the reset button if there is a score
+            if (score.wins > 0 || score.ties > 0 || score.losses > 0) {
+                document.getElementById('reset-button').style.display = 'inline-block';
+            }
+        }
+
+        function confirmResetScores() {
+            if (confirm("Are you sure you want to reset the scores?")) {
+                resetScores();
+            }
+        }
+
+        function resetScores() {
+            score.wins = 0;
+            score.ties = 0;
+            score.losses = 0;
+
+            localStorage.setItem('wins', score.wins);
+            localStorage.setItem('ties', score.ties);
+            localStorage.setItem('losses', score.losses);
+
+            document.getElementById('wins').textContent = score.wins;
+            document.getElementById('ties').textContent = score.ties;
+            document.getElementById('losses').textContent = score.losses;
+
+            document.getElementById('game-results').textContent = "Scores have been reset.";
+
+            // Hide the reset button again
+            document.getElementById('reset-button').style.display = 'none';
+        }
+    </script>
+</body>
+</html>
