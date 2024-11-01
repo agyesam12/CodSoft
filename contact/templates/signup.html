@@ -1,0 +1,33 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="container-fluid">
+  <div class="overlay"></div>
+  <div class="row justify-content-center align-items-center h-100">
+    <div class="col-lg-6 col-md-8 col-sm-12">
+      <div class="signup-card shadow-lg">
+        <div class="row no-gutters">
+          <div class="col-md-6">
+            <img src="{% static 'images/signup.jpeg' %}" class="img-fluid" alt="Sign Up Image">
+          </div>
+          <div class="col-md-6">
+            <div class="card-body">
+              <h2 class="text-center">Create An Account</h2>
+              <form method="post">
+                {% csrf_token %}
+                <fieldset class="form-group">
+                  <legend class="border-bottom mb-4">Register</legend>
+                  {{ form.as_p }}
+                </fieldset>
+                <div class="form-group">
+                  <button class="btn btn-outline-info btn-block" type="submit">Register</button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
