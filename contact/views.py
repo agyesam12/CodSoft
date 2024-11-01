@@ -51,7 +51,7 @@ def signup(request):
     else:
         form = RegisterUserForm()
     context = {'form':form}
-    return render(request, 'signin.html', context)
+    return render(request, 'signup.html', context)
 
 def contact(request):
     return render(request, 'contact.html')
