@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import *
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
@@ -58,3 +58,8 @@ def contact(request):
 
 def about(request):
     return render(request, 'about.html')
+
+def signout(request):
+    logout(request)
+    messages.success(request,f"Logged out successfully")
+    return redirect('home')
