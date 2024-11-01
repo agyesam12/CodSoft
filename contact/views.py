@@ -10,7 +10,7 @@ from django.utils import timezone
 from django.urls import reverse
 from django.http import JsonResponse
 from .forms import *
-from .forms import RegisterUserForm,CreateTodoForm
+from .forms import RegisterUserForm
 from .models import User
 
 
