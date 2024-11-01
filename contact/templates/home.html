@@ -4,7 +4,7 @@
 <div class="overlay"></div> <!-- Rain animation overlay -->
 
 <section class="container text-center">
-    <h3 class="amisty">Welcome To SammyKeysOfficial Contact Application</h3>
+    <h3 class="amisty">Welcome {{request.user.username}} To SammyKeysOfficial Contact Application</h3>
     <hr>
     <br>
     <div class="row">
@@ -15,7 +15,11 @@
                 <div class="card-body">
                     <h5 class="card-title">Contact Us</h5>
                     <p>Get in touch with us for any queries or support.</p>
+                    {% if request.user.is_authenticated %}
                     <a href="{% url 'contact' %}" class="btn btn-primary">Contact Page</a>
+                    {% else %}
+                    <a href="{% url 'signin' %}" class="btn btn-primary">Contact Page</a>
+                    {% endif %}
                 </div>
             </div>
         </div>
