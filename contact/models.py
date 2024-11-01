@@ -15,3 +15,25 @@ class User(AbstractUser):
 
     def __str__(self):
         return self.username
+
+
+class Contact(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=250, null=True, blank=False)
+    last_name = models.CharField(max_length=250, null=True, blank=False)
+    location = models.CharField(max_length=250, null=True, blank=False)
+    email = models.EmailField(null=True, blank=False)
+    phone_number = models.CharField(max_length=250, null=True)
+    message = models.TextField(blank=False, null=True)
+    created_at = models.DateTimeField(auto_now_add=True, null=True)
+    
+
+    def __str__(self):
+        return f"{self.contact_id} - {self.name}"
+    
+    def get_absolute_url(self):
+        return reverse('contact-detail', kwargs={ "pk":self.contact_id})
+    
+    class Meta:
+        ordering = ['-created_at']
+        
