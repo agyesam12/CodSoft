@@ -76,7 +76,7 @@ body {
   form label {
     display: inline-block;
     margin-bottom: 0.5rem;
-    color: #fff;
+    color: #13e013;
   }
 
   @media (max-width: 768px) {
