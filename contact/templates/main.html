@@ -75,23 +75,14 @@
           <li class="nav-item"><a class="nav-link"href="{% url 'signup' %}"><i class="fa fa-home"></i>Register</a></li>
           <li class="nav-item"><a class="nav-link"href="{% url 'signin' %}"><i class="fa fa-home"></i>Login</a></li>
           {% else %}
-              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Todo</a>
+              <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Contact</a>
                 <div class="dropdown-menu">
-                  <a class="dropdown-item" href="{% url 'CreateTodo' %}">Add Todo</a>
-                  <a class="dropdown-item" href="{% url 'ViewTodos' %}">View Todos</a>
+                  <a class="dropdown-item" href="#">Add Contact</a>
+                  <a class="dropdown-item" href="#">View Contacts</a>
                 </div></li>
-                
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Lets Vibe</a>
-                    <div class="dropdown-menu">
-                      <a class="dropdown-item" href="#">Chat</a>
-                      <a class="dropdown-item" href="#">View Chats</a>
-                    </div></li>
                     <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">Accessories</a>
                       <div class="dropdown-menu">
-                        <a class="dropdown-item" href="#">Create Profile</a>
-                        <a class="dropdown-item" href="">View Profile</a>
-                        <a class="dropdown-item" href="#">Update Profile</a>
-                        <a class="dropdown-item" href="{% url 'update_password' %}">Update Password</a>
+                        <a class="dropdown-item" href="#">Update Password</a>
                         <a class="dropdown-item" href="#">View Notifications</a>
                         <a class="dropdown-item" href="#">Subscribe</a>
                         <a class="dropdown-item" href="#">Send Feedbacks</a>
