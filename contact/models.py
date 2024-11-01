@@ -2,6 +2,33 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+def user_image_directory(instance, filename, folder):
+    ext = filename.split('.')[-1]
+    filename = f"{instance.user.id}.{ext}"
+    return f"user_{instance.user.id}/{folder}/{filename}"
+
+def user_image_path(instance, filename):
+    return user_image_directory(instance, filename, 'images')
+
+def identity_card_path(instance, filename):
+    return user_image_directory(instance, filename, 'identity_cards')
+
+GENDER = (
+    ('male','Male'),
+    ('female','Female'),
+    ('other','Other')
+)
+
+
+NOTIFY = (
+    ('warning','warning'),
+    ('error','error'),
+    ('info','info')
+)
+
+
+
+
 class User(AbstractUser):
     username = models.CharField(max_length=200, null=True, blank=True)
     full_name = models.CharField(max_length=200, null=True, blank=True)
