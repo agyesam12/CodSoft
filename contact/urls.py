@@ -10,4 +10,7 @@ urlpatterns = [
     path('about/',views.about, name='about'),
     path('signout/',views.signout, name='signout'),
     path('CreateContact/',CreateContact.as_view(), name='CreateContact'),
+    path('ViewContacts/',ViewContacts.as_view(), name='ViewContacts'),
+    path('DeleteContact/<str:pk>',DeleteContact.as_view(), name='DeleteContact'),
+    path('DeleteContactSuccessPage/', DeleteContactSuccessPage.as_view(), name='DeleteContactSuccessPage'),
 ]
