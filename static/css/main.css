@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background: url('/static/images/back.jpeg') repeat;
+    background: url('/static/images/back.jpeg')repeat;
     color: #f3f7f5;
     margin: 0;
     padding: 0;
@@ -29,6 +29,9 @@ body {
   
   h2,h4 {
     color: #fff;
+  }
+  .amisty{
+    color:white;
   }
   
   p {
@@ -92,5 +95,9 @@ body {
     .view-todos-card-body, .profile-info p, .signup-card .form-group, .signin-card .form-group {
         font-size: 14px;
     }
+  }
+  #userTable thead th{
+    color: #fff;
+    background: #6388aa;
   }
   
