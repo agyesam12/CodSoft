@@ -151,5 +151,16 @@ class UpdateContact(LoginRequiredMixin, UpdateView):
         messages.success(self.request, f"contact was updated successfully by {self.request.user.username}")
         return reverse_lazy('ViewContacts')
 
+class ContactDetailPage(LoginRequiredMixin,DetailView):
+    model = Contact
+    template_name= 'contact_detail.html'
+    context_object_name = 'contact'
 
+    def get_context_data(self, **kwargs):
+        return super().get_context_data(**kwargs)
+        context['page_name']= 'contact-details'
+        context['list_name'] = 'contact-details'
+        return context
+    
+    
 
