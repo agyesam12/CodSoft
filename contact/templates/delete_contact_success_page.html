@@ -1,0 +1,14 @@
+{% extends 'main.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card success-card">
+        <div class="card-body">
+            <h5 class="card-title">Success</h5>
+            <p class="card-text">The contact item has been successfully deleted.</p>
+            <a href="{% url 'ViewContacts' %}" class="btn btn-primary">Back to Todos</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
