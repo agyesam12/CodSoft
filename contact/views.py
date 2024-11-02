@@ -63,3 +63,24 @@ def signout(request):
     logout(request)
     messages.success(request,f"Logged out successfully")
     return redirect('home')
+
+class CreateContact(LoginRequiredMixin,CreateView):
+    model = Contact
+    form_class = CreateContactForm
+    template_name = 'create_contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_name'] = 'create_contacts'
+        context['list_name'] = 'contactslists'
+        return context
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        messages.success(self.request, f"contact was added successfully {self.request.user.username}")
+        return reverse_lazy('ViewContacts')
