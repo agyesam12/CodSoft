@@ -71,10 +71,10 @@ class Contact(models.Model):
     
 
     def __str__(self):
-        return f"{self.contact_id} - {self.name}"
+        return f"{self.id} - {self.name}"
     
     def get_absolute_url(self):
-        return reverse('contact-detail', kwargs={ "pk":self.contact_id})
+        return reverse('contact-detail', kwargs={ "pk":self.id})
     
     class Meta:
         ordering = ['-created_at']
