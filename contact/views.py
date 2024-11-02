@@ -84,3 +84,19 @@ class CreateContact(LoginRequiredMixin,CreateView):
     def get_success_url(self):
         messages.success(self.request, f"contact was added successfully {self.request.user.username}")
         return reverse_lazy('ViewContacts')
+
+class ViewContacts(LoginRequiredMixin,ListView):
+    model = Contact
+    template_name = 'view_contacts.html'
+    context_object_name = 'contacts'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_name'] = 'contactslists'
+        context['list_name'] = 'contactslists'
+        return context
+
+    def get_queryset(self):
+        return Contact.objects.filter(user=self.request.user,created_at__lt=timezone.now()).order_by('-created_at')
+
+        
