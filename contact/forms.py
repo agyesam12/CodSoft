@@ -32,3 +32,10 @@ class CreateContactForm(forms.ModelForm):
             'phone_number': forms.TextInput(attrs={'placeholder': 'Please enter the phone number'}),
             'message': forms.Textarea(attrs={'place holder': 'please enter any message for this contact '})
         }
+
+
+class UpdateContactForm(forms.ModelForm):
+    class Meta:
+        model = Contact
+        fields = ['first_name','last_name','location', 'email','phone_number','message']
+        
