@@ -120,3 +120,36 @@ class DeleteContactSuccessPage(View):
     def get(self, request):
         return render(request, self.template_name)
 
+class UpdateContact(LoginRequiredMixin, UpdateView):
+    model = Contact
+    form_class= UpdateContactForm
+    template_name = 'update_contact.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_name'] = 'updatecontacts'
+        context['list_name'] = 'updatecontactlists'
+        return context
+
+
+    def get_object(self, queryset=None):
+         def get_object(self, queryset=None):
+            try:
+                return Contact.objects.get(user=self.request.user, pk=self.kwargs['pk'])
+            except Contact.DoesNotExist:
+                return None
+
+
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        contact = Contact.objects.filter(user=form.instance.user)
+        contact.update()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        messages.success(self.request, f"contact was updated successfully by {self.request.user.username}")
+        return reverse_lazy('ViewContacts')
+
+
+
