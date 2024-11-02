@@ -99,4 +99,24 @@ class ViewContacts(LoginRequiredMixin,ListView):
     def get_queryset(self):
         return Contact.objects.filter(user=self.request.user,created_at__lt=timezone.now()).order_by('-created_at')
 
-        
+
+class DeleteContact(LoginRequiredMixin, DeleteView):
+    model = Contact
+    template_name = 'delete_contact.html'
+
+
+    def get_success_url(self):
+        messages.success(self.request, f"Contact Deleted Successfully...")
+        return reverse_lazy('DeleteContactSuccessPage')
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['page_name'] = 'delete_contacts'
+        context['list_name'] = 'delete_contactslists'
+        return context
+
+class DeleteContactSuccessPage(View):
+    template_name = 'delete_contact_success_page.html'
+    def get(self, request):
+        return render(request, self.template_name)
+
