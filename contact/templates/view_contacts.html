@@ -18,6 +18,7 @@
         <th>Location</th>
         <th>Email</th>
         <th>Phone Number</th>
+        <th>Details</th>
         <th>Update Contact</th>
         <th>Delete Contact</th>
       </tr>
@@ -31,6 +32,7 @@
         <td>{{contact.location}}</td>
         <td>{{contact.email}}</td>
         <td>{{contact.phone_number}}</td>
+        <td><a class="btn btn-info" href="{% url 'ContactDetail' contact.id %}">View Details</a></td>
         <td><a class="btn btn-primary" href="{% url 'UpdateContact' contact.id %}">Update Contact</a></td>
         <td><a class="btn btn-danger" onclick="return alert('We are processing your request');"href="{% url 'DeleteContact' contact.id %}">delete contact</a></td>
       </tr>
