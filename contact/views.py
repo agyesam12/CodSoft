@@ -125,6 +125,7 @@ class UpdateContact(LoginRequiredMixin, UpdateView):
     form_class= UpdateContactForm
     template_name = 'update_contact.html'
 
+
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['page_name'] = 'updatecontacts'
@@ -133,11 +134,10 @@ class UpdateContact(LoginRequiredMixin, UpdateView):
 
 
     def get_object(self, queryset=None):
-         def get_object(self, queryset=None):
-            try:
-                return Contact.objects.get(user=self.request.user, pk=self.kwargs['pk'])
-            except Contact.DoesNotExist:
-                return None
+        try:
+            return Contact.objects.get(user=self.request.user, pk=self.kwargs['pk'])
+        except Contact.DoesNotExist:
+            return None
 
 
 
