@@ -14,4 +14,5 @@ urlpatterns = [
     path('DeleteContact/<str:pk>',DeleteContact.as_view(), name='DeleteContact'),
     path('DeleteContactSuccessPage/', DeleteContactSuccessPage.as_view(), name='DeleteContactSuccessPage'),
     path('UpdateContact/<str:pk>',UpdateContact.as_view(), name='UpdateContact'),
+    path('ContactDetailPage/<str:pk>',ContactDetailPage.as_view(), name='ContactDetailPage'),
 ]
