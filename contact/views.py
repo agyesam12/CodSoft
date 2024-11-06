@@ -12,6 +12,7 @@ from django.http import JsonResponse
 from .forms import *
 from .forms import RegisterUserForm
 from .models import User
+from django.contrib.auth.hashers import make_password
 
 
 # Create your views here.
