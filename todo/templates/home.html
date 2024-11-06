@@ -7,9 +7,9 @@
     <h3 class="amisty">Welcome To SammyKeysOfficial Website</h3>
     <hr>
     <br>
-    <div class="row">
+    <div class="row justify-content-center">
         <!-- Todos Card -->
-        <div class="col-md-3" style="margin-bottom: 22px;">
+        <div class="col-md-6" style="margin-bottom: 22px;">
             {% if not request.user.is_authenticated %}
             <a onclick="confirm('Are you sure you want to open this page?');" href="{% url 'signin' %}">
                 <div class="card thumbnail mydivstyle">
@@ -31,66 +31,6 @@
                 </div>
             </a>
             {% endif %}
-        </div>
-        <!-- Group Chat Card -->
-        <div class="col-md-3" style="margin-bottom: 22px;">
-            {% if not request.user.is_authenticated %}
-            <a onclick="confirm('Are you sure you want to open this page?');" href="{% url 'signin' %}">
-                <div class="card thumbnail mydivstyle">
-                    <img style="width:140px;" class="card-img-top" src="#" alt="Group Chat image">
-                    <div class="card-body">
-                        <h5 class="card-title">Lets Vibe</h5>
-                        <p>Join the conversation.</p>
-                    </div>
-                </div>
-            </a>
-            {% else %}
-            <a onclick="confirm('Are you sure you want to open this page?');" href="{% url 'signin' %}">
-                <div class="card thumbnail mydivstyle">
-                    <img style="width:140px;" class="card-img-top" src="#" alt="Group Chat image">
-                    <div class="card-body">
-                        <h5 class="card-title">Group Chat</h5>
-                        <p>Join the conversation.</p>
-                    </div>
-                </div>
-            </a>
-            {% endif %}
-        </div>
-        <!-- FAQs Card -->
-        <div class="col-md-3" style="margin-bottom: 22px;">
-            <a href="#">
-                <div class="card thumbnail mydivstyle">
-                    <img style="width:140px;" class="card-img-top" src="{% static 'images/faqs.jpg' %}" alt="FAQs image">
-                    <div class="card-body">
-                        <h5 class="card-title">FAQs</h5>
-                        <p>Find answers to common questions.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- Feedback Card -->
-        <div class="col-md-3" style="margin-bottom: 22px;">
-            <a href="#">
-                <div class="card thumbnail mydivstyle">
-                    <img style="width:140px;" class="card-img-top" src="#" alt="Feedback image">
-                    <div class="card-body">
-                        <h5 class="card-title">Feedback</h5>
-                        <p>Give us your feedback.</p>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- Subscribe Card -->
-        <div class="col-md-3" style="margin-bottom: 22px;">
-            <a href="#">
-                <div class="card thumbnail mydivstyle">
-                    <img style="width:140px;" class="card-img-top" src="{% static 'images/subscribe.jpg' %}" alt="Subscribe image">
-                    <div class="card-body">
-                        <h5 class="card-title">Subscribe</h5>
-                        <p>Stay updated with our latest news.</p>
-                    </div>
-                </div>
-            </a>
         </div>
     </div>
 </section>
