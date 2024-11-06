@@ -1,6 +1,7 @@
 from django.urls import path
 from . import views
 from .views import *
+from django.contrib.auth import views as auth_view
 
 urlpatterns = [
     path('',views.home, name='home'),
@@ -15,4 +16,5 @@ urlpatterns = [
     path('DeleteContactSuccessPage/', DeleteContactSuccessPage.as_view(), name='DeleteContactSuccessPage'),
     path('UpdateContact/<str:pk>',UpdateContact.as_view(), name='UpdateContact'),
     path('ContactDetailPage/<str:pk>',ContactDetailPage.as_view(), name='ContactDetailPage'),
+    path('update_password/',auth_view.PasswordChangeView.as_view(template_name="update_password.html",success_url="home" ),name='update_password'),
 ]
