@@ -18,5 +18,6 @@ urlpatterns = [
     path('update_password/',auth_view.PasswordChangeView.as_view(template_name="update_password.html",success_url="home" ),name='update_password'),
     path('DeleteTodo/<str:pk>',DeleteTodo.as_view(), name='DeleteTodo'),
     path('DeleteTodoSuccessPage/', DeleteTodoSuccessPage.as_view(), name='DeleteTodoSuccessPage'),
+    path('update_todo_status/<str:pk>',views.update_todo_status, name='update_todo_status'),
     
 ]
