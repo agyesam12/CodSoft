@@ -157,4 +157,12 @@ class DeleteTodoSuccessPage(LoginRequiredMixin,View):
     def get(self, request):
         return render(request, self.template_name)
 
+class ViewNotifications(LoginRequiredMixin,View):
+    model = Notifications
+    template_name = 'view_notifications.html'
+    def get(self, request, *args, **kwargs):
+        notifications = Notifications.objects.filter(user=request.user,seen=False).order_by('created_at')
+        context = {'notifications': notifcations}
+        return render(request, self.template_name, context)
+
 
