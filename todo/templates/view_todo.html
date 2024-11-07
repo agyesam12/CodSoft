@@ -11,7 +11,14 @@
         <div class="view-todos-card thumbnail" style="margin-bottom: 20px;">
           <div class="view-todos-card-header">{{ todo.title }}</div>
           <div class="view-todos-card-body">
-            <p>Status: {{ todo.is_done }}</p>
+            <form method="post" action="{% url 'update_todo_status' todo.id %}">
+              {% csrf_token %}
+              <p>Status: 
+                <input type="checkbox" name="is_done" {% if todo.is_done %}checked{% endif %} 
+                       onchange="this.form.submit()">
+                {{ todo.is_done|yesno:"Completed,Pending" }}
+              </p>
+            </form>
             <p>
               {% if todo.description %}
                 {{ todo.description }}
@@ -36,7 +43,6 @@
       </a>
       {% endfor %}
     </div>
-  </div>
+  </div>
 </div>
-
 {% endblock %}
