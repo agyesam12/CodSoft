@@ -169,7 +169,7 @@ class ViewNotifications(LoginRequiredMixin,View):
 
 @login_required
 def update_todo_status(request,pk):
-    todo = get_object_or_404(Todo,pk=pk,user=request.User)
+    todo = get_object_or_404(Todo,pk=pk,user=request.user)
     todo.is_done = not todo.is_done
     todo.save()
     messages.success(request,f"todo status is successfully updated")
