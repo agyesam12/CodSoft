@@ -11,6 +11,7 @@ from django.http import JsonResponse
 from .forms import *
 from .forms import RegisterUserForm,CreateTodoForm
 from .models import User
+from django.shortcuts import redirect, get_object_or_404
 
 # Create your views here.
 
@@ -164,5 +165,15 @@ class ViewNotifications(LoginRequiredMixin,View):
         notifications = Notifications.objects.filter(user=request.user,seen=False).order_by('created_at')
         context = {'notifications': notifcations}
         return render(request, self.template_name, context)
+
+
+@login_required
+def update_todo_status(request,pk):
+    todo = get_object_or_404(Todo,pk=pk,user=request.User)
+    todo.is_done = not todo.is_done
+    todo.save()
+    messages.success(request,f"todo status is successfully updated")
+    return redirect(request.META.get("HTTP_REFERER"))
+
 
 
