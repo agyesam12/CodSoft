@@ -173,6 +173,23 @@ class UserDashBoard(LoginRequiredMixin,View):
         return render(request,self.template_name,context)
 
     def post(self,request,*args,**kwargs):
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        location = request.POST['location']
+        email = request.POST['email']
+        phone_number = request.POST['phone_number']
+        message = request.POST['message']
+
+        if first_name and last_name and location and email and message:
+            Contact.objects.create(
+                user=request.user,
+                first_name=first_name,
+                last_name=last_name,
+                location=location,
+                email=email,
+                phone_number=phone_number,
+                message=message
+            )
         return redirect(request.META.get("HTTP_REFERER"))
     
     
