@@ -100,4 +100,35 @@ body {
     color: #fff;
     background: #6388aa;
   }
+
+
+  .contact-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contact-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.contact-item span {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.contact-name {
+    font-weight: bold;
+    font-size: 1.2em;
+}
+
+.contact-email, .contact-phone, .contact-location, .contact-message {
+    font-size: 0.9em;
+    color: #555;
+}
+
   
