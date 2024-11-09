@@ -162,6 +162,18 @@ class ContactDetailPage(LoginRequiredMixin,DetailView):
         context['page_name']= 'contact-details'
         context['list_name'] = 'contact-details'
         return context
+
+class UserDashBoard(LoginRequiredMixin,View):
+    model = Contact
+    template_name = 'user_dashboard.html'
+
+    def get(self,request):
+        contact = Contact.objects.filter(user=request.user)
+        context = {'contacts':contact}
+        return render(request,self.template_name,context)
+
+    def post(self,request,*args,**kwargs):
+        return redirect(request.META.get("HTTP_REFERER"))
     
     
 
