@@ -27,7 +27,7 @@ def signin(request):
             if user.is_active:
                 login(request, user)
                 messages.success(request, "Logged in successfully")
-                return redirect('home')
+                return redirect('HomePage')
             else:
                 messages.warning(request, "Account is inactive")
         else:
@@ -51,8 +51,7 @@ def signup(request):
     context = {'form':form}
     return render(request, 'signup.html', context)
 
-def home(request):
-    return render(request, 'home.html')
+
 
 
 def contact(request):
@@ -66,7 +65,7 @@ def signout(request):
     if request.user.is_authenticated:
         logout(request)
         messages.success(request, f"Logged out successfully ... ")
-        return redirect("home")
+        return redirect("UserDashBoard")
 
 
 class CreateTodo(LoginRequiredMixin,CreateView):
@@ -180,7 +179,7 @@ class HomePage(LoginRequiredMixin,View):
     template_name = 'home_todo.html'
 
     def get(self,request):
-        todo = Todo.objects.all()
+        todo = Todo.objects.filter(user=request.user)
         context = {'todos':todo}
         return render(request, self.template_name, context)
 
@@ -193,6 +192,15 @@ class HomePage(LoginRequiredMixin,View):
         todo.save()
         messages.success(request,f"Todo created successfully")
         return redirect(request.META.get("HTTP_REFERER"))
+
+class UserDashBoard(LoginRequiredMixin, View):
+    model = Todo
+    template_name = 'home.html'
+
+    def get(self, request):
+        todo = Todo.objects.filter(user=request.user,is_done=True)
+        context = {'todos':todo}
+        return render(request,self.template_name,context)
         
 
 
