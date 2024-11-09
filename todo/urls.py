@@ -1,7 +1,7 @@
 from django.urls import path
 from django.contrib.auth import views as auth_view
 from . import views
-from .views import CreateTodo, ViewTodos,UpdateTodo,DeleteTodo,DeleteTodoSuccessPage,ViewNotifications
+from .views import CreateTodo, ViewTodos,UpdateTodo,DeleteTodo,DeleteTodoSuccessPage,ViewNotifications,HomePage
 from django.contrib.auth import views as auth_view
 
 
@@ -19,5 +19,6 @@ urlpatterns = [
     path('DeleteTodo/<str:pk>',DeleteTodo.as_view(), name='DeleteTodo'),
     path('DeleteTodoSuccessPage/', DeleteTodoSuccessPage.as_view(), name='DeleteTodoSuccessPage'),
     path('update_todo_status/<str:pk>',views.update_todo_status, name='update_todo_status'),
+    path('HomePage/',HomePage.as_view(), name='HomePage'),
     
 ]
