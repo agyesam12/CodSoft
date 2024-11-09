@@ -209,4 +209,70 @@ p {
   color: #333;
 }
 
+.add-todo-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.add-todo-form .form-group {
+  margin-bottom: 15px;
+}
+
+.todos-table {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.todos-table th, .todos-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.todos-table th {
+  background-color: #f1f1f1;
+}
+
+.todos-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.add-todo-form {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.add-todo-form .form-group {
+  margin-bottom: 15px;
+}
+
+.todos-table {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.todos-table th, .todos-table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.todos-table th {
+  background-color: #f1f1f1;
+}
+
+.todos-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+
 /* Rain animation */
