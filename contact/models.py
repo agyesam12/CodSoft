@@ -48,7 +48,7 @@ class User(AbstractUser):
         return self.username
 
 class Notifications(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE,null=True)
     message = models.TextField(blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     notification_type = models.CharField(max_length=20, choices= NOTIFY, default="info")
@@ -109,12 +109,11 @@ def create_notification(sender, instance, created, **kwargs):
         if sender == Contact:
             notification_message = f"{instance.user.username} added a new contact: {instance.phone_number}"
         elif sender == Subscription:
-            notification_message = f"{instance.user.username} subscribed"
+            notification_message = f"You have successfully subscribed"
         elif sender == Feedback:
             notification_message = f"{instance.user.username} sent feedback"
 
         Notifications.objects.create(
-            user=instance.user, 
             message=notification_message,
             created_at=timezone.now(),
             seen=False
