@@ -3,11 +3,12 @@ from django.contrib.auth import views as auth_view
 from . import views
 from .views import CreateTodo, ViewTodos,UpdateTodo,DeleteTodo,DeleteTodoSuccessPage,ViewNotifications,HomePage
 from django.contrib.auth import views as auth_view
+from .views import *
 
 
 urlpatterns = [
     path('', views.signin,name="signin"),
-    path('home/', views.home, name='home'),
+    path('UserDashBoard/', UserDashBoard.as_view(), name='UserDashBoard'),
     path('contact/', views.contact, name='contact'),
     path('about/', views.about, name='about'),
     path('signup/', views.signup, name='signup'),
