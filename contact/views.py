@@ -11,7 +11,7 @@ from django.urls import reverse
 from django.http import JsonResponse
 from .forms import *
 from .forms import RegisterUserForm
-from .models import User
+from .models import User,Subscription,Feedback,Notifications
 from django.contrib.auth.hashers import make_password
 
 
@@ -19,6 +19,7 @@ from django.contrib.auth.hashers import make_password
 
 def home(request):
     return render(request, 'home.html')
+
 
 def signin(request):
     if request.user.is_authenticated:
@@ -38,6 +39,7 @@ def signin(request):
             messages.info(request, "Account not found, please register")
     return render(request,'signin.html')
 
+
 def signup(request):
     if request.method == 'POST':
         form = RegisterUserForm(request.POST)
@@ -54,16 +56,20 @@ def signup(request):
     context = {'form':form}
     return render(request, 'signup.html', context)
 
+
 def contact(request):
     return render(request, 'contact.html')
 
+
 def about(request):
     return render(request, 'about.html')
+
 
 def signout(request):
     logout(request)
     messages.success(request,f"Logged out successfully")
     return redirect('home')
+
 
 class CreateContact(LoginRequiredMixin,CreateView):
     model = Contact
@@ -85,6 +91,7 @@ class CreateContact(LoginRequiredMixin,CreateView):
     def get_success_url(self):
         messages.success(self.request, f"contact was added successfully {self.request.user.username}")
         return reverse_lazy('ViewContacts')
+
 
 class ViewContacts(LoginRequiredMixin,ListView):
     model = Contact
@@ -110,6 +117,7 @@ class DeleteContact(LoginRequiredMixin, DeleteView):
         messages.success(self.request, f"Contact Deleted Successfully...")
         return reverse_lazy('DeleteContactSuccessPage')
 
+
     def get_context_data(self,**kwargs):
         context = super().get_context_data(**kwargs)
         context['page_name'] = 'delete_contacts'
@@ -118,8 +126,10 @@ class DeleteContact(LoginRequiredMixin, DeleteView):
 
 class DeleteContactSuccessPage(View):
     template_name = 'delete_contact_success_page.html'
+
     def get(self, request):
         return render(request, self.template_name)
+
 
 class UpdateContact(LoginRequiredMixin, UpdateView):
     model = Contact
@@ -148,6 +158,7 @@ class UpdateContact(LoginRequiredMixin, UpdateView):
         contact.update()
         return super().form_valid(form)
 
+
     def get_success_url(self):
         messages.success(self.request, f"contact was updated successfully by {self.request.user.username}")
         return reverse_lazy('ViewContacts')
@@ -157,20 +168,24 @@ class ContactDetailPage(LoginRequiredMixin,DetailView):
     template_name= 'contact_detail.html'
     context_object_name = 'contact'
 
+
     def get_context_data(self, **kwargs):
         return super().get_context_data(**kwargs)
         context['page_name']= 'contact-details'
         context['list_name'] = 'contact-details'
         return context
 
+
 class UserDashBoard(LoginRequiredMixin,View):
     model = Contact
     template_name = 'user_dashboard.html'
+
 
     def get(self,request):
         contact = Contact.objects.filter(user=request.user)
         context = {'contacts':contact,'user_first_name': request.user.first_name}
         return render(request,self.template_name,context)
+
 
     def post(self,request,*args,**kwargs):
         first_name = request.POST['first_name']
@@ -192,6 +207,7 @@ class UserDashBoard(LoginRequiredMixin,View):
             )
         return redirect(request.META.get("HTTP_REFERER"))
     
+
 class ViewNotifications(LoginRequiredMixin,View):
     model = Notifications
     template_name = 'view_notifications.html'
@@ -200,4 +216,13 @@ class ViewNotifications(LoginRequiredMixin,View):
         notifcations = Notifications.objects.filter(user=request.user,seen=False)
         context = {'notifications':notifcations}
         return render(request,self.template_name,context)
+
+    def post(self,request):
+        email = request.POST['email']
+        user = request.user
+        if email:
+            subscription = Subscription(email=email, created_at=timezone.now())
+            subscription.save()
+            messages.success(request,f" {user} you have successfully subscribed ...")
+        return redirect(request.META.get("HTTP_REFERER"))
 
