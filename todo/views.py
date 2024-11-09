@@ -175,5 +175,25 @@ def update_todo_status(request,pk):
     messages.success(request,f"todo status is successfully updated")
     return redirect(request.META.get("HTTP_REFERER"))
 
+class HomePage(LoginRequiredMixin,View):
+    model = Todo
+    template_name = 'home_todo.html'
+
+    def get(self,request):
+        todo = Todo.objects.all()
+        context = {'todos':todo}
+        return render(request, self.template_name, context)
+
+    def post(self, request, *args,**kwargs):
+        title = request.POST['title']
+        description = request.POST['description']
+        is_done = 'is_done' in request.POST
+        is_due = request.POST['is_due']
+        todo = Todo(user=request.user,title=title,description=description,is_done=is_done,is_due=is_due)
+        todo.save()
+        messages.success(request,f"Todo created successfully")
+        return redirect(request.META.get("HTTP_REFERER"))
+        
+
 
 
