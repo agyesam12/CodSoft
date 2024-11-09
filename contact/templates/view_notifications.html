@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+    <h1>Your Notifications</h1>
+    <ul class="notification-list">
+        {% for notification in notifications %}
+            <li class="notification-item {{ notification.notification_type }}">
+                <p class="notification-message">{{ notification.message }}</p>
+                <span class="notification-time">{{ notification.created_at }}</span>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
