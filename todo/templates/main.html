@@ -62,14 +62,14 @@
 <body>
     <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
         <div class="container">
-      <a class="navbar-brand mr-auto" href="{% url 'home' %}">Todo List App</a>
+      <a class="navbar-brand mr-auto" href="{% url 'UserDashBoard' %}">Todo List App</a>
       <button type="button" class="navbar-toggler"data-toggle="collapse" data-target="#myMenu">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse text-center" id="myMenu">
         <ul class="navbar-nav ml-auto">
           {% if not request.user.is_authenticated %}
-          <li class="nav-item"><a class="nav-link"href="{% url 'home' %}"><i class="fa fa-home"></i> Home</a></li>
+          <li class="nav-item"><a class="nav-link"href="{% url 'UserDashBoard' %}"><i class="fa fa-home"></i> Home</a></li>
           <li class="nav-item"><a class="nav-link"href="{% url 'contact' %}"><i class="fa fa-phone"></i> Contact</a></li>
           <li class="nav-item"><a class="nav-link"href="{% url 'about' %}"><i class="fa fa-address-card"></i>About</a></li>
           <li class="nav-item"><a class="nav-link"href="{% url 'signup' %}"><i class="fa fa-home"></i>Register</a></li>
@@ -89,7 +89,7 @@
                         
               
                       </div></li>
-                <li class="nav-item"><a onclick="return confirm('Please are you sure you want to return to the admin dashboard')"; class="nav-link"href="#"><i class="fa fa-home"></i> User Dashboard</a></li>   
+                <li class="nav-item"><a onclick="return confirm('Please are you sure you want to return to the admin dashboard')"; class="nav-link"href="{% url 'UserDashBoard' %}"><i class="fa fa-home"></i> User Dashboard</a></li>   
             <li class="nav-item"><a onclick="return confirm('Please are you sure you want to signout')"; class="nav-link"href="{% url 'signout' %}"><i class="fa fa-home"></i> logout</a></li>
            {% endif %}
         </ul>
