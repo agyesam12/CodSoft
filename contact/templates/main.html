@@ -89,7 +89,7 @@
                         <a class="dropdown-item" href="#">Ask Question</a>
                         <a class="dropdown-item" href="#">View Asked Questions</a>
                       </div></li>
-                <li class="nav-item"><a onclick="return confirm('Please are you sure you want to return to the admin dashboard')"; class="nav-link"href="#"><i class="fa fa-home"></i> User Dashboard</a></li>   
+                <li class="nav-item"><a onclick="return confirm('Please are you sure you want to return to the admin dashboard')"; class="nav-link"href="{% url 'UserDashBoard' %}"><i class="fa fa-home"></i> User Dashboard</a></li>   
             <li class="nav-item"><a onclick="return confirm('Please are you sure you want to signout')"; class="nav-link"href="{% url 'signout' %}"><i class="fa fa-home"></i> logout</a></li>
            {% endif %}
         </ul>
