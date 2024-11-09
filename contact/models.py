@@ -71,7 +71,7 @@ class Contact(models.Model):
     
 
     def __str__(self):
-        return f"{self.id} - {self.name}"
+        return f"{self.id} - {self.phone_number}"
     
     def get_absolute_url(self):
         return reverse('contact-detail', kwargs={ "pk":self.id})
