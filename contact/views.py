@@ -192,5 +192,12 @@ class UserDashBoard(LoginRequiredMixin,View):
             )
         return redirect(request.META.get("HTTP_REFERER"))
     
-    
+class ViewNotifications(LoginRequiredMixin,View):
+    model = Notifications
+    template_name = 'view_notifications.html'
+
+    def get(self,request):
+        notifcations = Notifications.objects.filter(user=request.user,seen=False)
+        context = {'notifications':notifcations}
+        return render(request,self.template_name,context)
 
