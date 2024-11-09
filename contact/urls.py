@@ -17,4 +17,5 @@ urlpatterns = [
     path('UpdateContact/<str:pk>',UpdateContact.as_view(), name='UpdateContact'),
     path('ContactDetailPage/<str:pk>',ContactDetailPage.as_view(), name='ContactDetailPage'),
     path('update_password/',auth_view.PasswordChangeView.as_view(template_name="update_password.html",success_url="home" ),name='update_password'),
+    path('UserDashBoard/', UserDashBoard.as_view(), name='UserDashBoard'),
 ]
