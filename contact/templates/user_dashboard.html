@@ -1,7 +1,7 @@
 {% extends 'main.html' %}
 
 {% block content %}
-    <h1>Welcome, {{ user_first_name }}!</h1>
+    <h1>Welcome, {{ request.user.username }}!</h1>
     <h2>Your Contacts</h2>
     <ul class="contact-list">
         {% for contact in contacts %}
