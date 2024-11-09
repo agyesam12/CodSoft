@@ -169,7 +169,7 @@ class UserDashBoard(LoginRequiredMixin,View):
 
     def get(self,request):
         contact = Contact.objects.filter(user=request.user)
-        context = {'contacts':contact}
+        context = {'contacts':contact,'user_first_name': request.user.first_name}
         return render(request,self.template_name,context)
 
     def post(self,request,*args,**kwargs):
