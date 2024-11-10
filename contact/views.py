@@ -251,3 +251,23 @@ class SendFeedBack(LoginRequiredMixin,CreateView):
     def get_success_url(self):
         messages.success(self.request,f"Feedback sent successfully ..")
         return reverse_lazy("UserDashBoard")
+
+
+
+class AskQuestion(LoginRequiredMixin,View):
+    model = FAQS
+    template_name = 'ask_question.html'
+
+
+    def get(self,request):
+        faqs = FAQS.objects.all()
+        context = {'faqs':faqs}
+        return render(request,self.template_name,context)
+
+
+    def post(self,request,*args,**kwargs):
+        question = request.POST['question']
+        faq = FAQS(user=request.user,question=question,date_asked=timezone.now())
+        faq.save()
+        messages.success(request,f"Question asked successfully, we will reply you very soon ...")
+        return redirect(request.META.get("HTTP_REFERER"))
