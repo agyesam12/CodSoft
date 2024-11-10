@@ -234,8 +234,8 @@ class SendFeedBack(LoginRequiredMixin,CreateView):
     form_class = FeedbackForm
 
 
-    def get_context_data(self):
-        context = super().get_context_data(self,**kwargs)
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
         context['page_name'] = 'create_feedback'
         context['list_name'] = 'feedbacklists'
         return context
@@ -250,4 +250,4 @@ class SendFeedBack(LoginRequiredMixin,CreateView):
 
     def get_success_url(self):
         messages.success(self.request,f"Feedback sent successfully ..")
-        return redirect(self.request.META.get("HTTP_REFERER"))
+        return reverse_lazy("UserDashBoard")
