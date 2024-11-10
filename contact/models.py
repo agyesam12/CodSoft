@@ -105,13 +105,17 @@ class Subscription(models.Model):
 
 class FAQS(models.Model):
     user = models.ForeignKey(User,on_delete=models.PROTECT)
-    question = models.CharField(max_length=200, null=True)
-    answer = models.CharField(max_length=200,null=True,blank=True)
+    question = models.CharField(max_length=255,null=True)
+    answer = models.TextField(null=True)
     date_asked = models.DateTimeField(auto_now_add=True)
     date_answered = models.DateTimeField(auto_now=True,null=True)
 
     def __str__(self):
         return f"{self.question} -- {self.request.user.username}"
+    
+    class Meta:
+        verbose_name = "FAQS"
+        verbose_name_plural = "FAQS"
     
     class Meta:
         ordering = ['date_asked']
