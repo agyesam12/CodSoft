@@ -116,9 +116,9 @@ class FAQS(models.Model):
     class Meta:
         verbose_name = "FAQS"
         verbose_name_plural = "FAQS"
-    
-    class Meta:
         ordering = ['date_asked']
+    
+
 
 
 def create_notification(sender, instance, created, **kwargs):
