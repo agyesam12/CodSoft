@@ -227,3 +227,27 @@ class ViewNotifications(LoginRequiredMixin,View):
             messages.success(request,f" {user} you have successfully subscribed ...")
         return redirect(request.META.get("HTTP_REFERER"))
 
+
+class SendFeedBack(LoginRequiredMixin,CreateView):
+    template_name = 'create_feedback.html'
+    model = Feedback
+    form_class = FeedbackForm
+
+
+    def get_context_data(self):
+        context = super().get_context_data(self,**kwargs)
+        context['page_name'] = 'create_feedback'
+        context['list_name'] = 'feedbacklists'
+        return context
+
+
+    def form_valid(self,form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return super().form_valid(form)
+
+
+    def get_success_url(self):
+        messages.success(self.request,f"Feedback sent successfully ..")
+        return redirect(self.request.META.get("HTTP_REFERER"))
