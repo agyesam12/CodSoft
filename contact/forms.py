@@ -38,4 +38,17 @@ class UpdateContactForm(forms.ModelForm):
     class Meta:
         model = Contact
         fields = ['first_name','last_name','location', 'email','phone_number','message']
+
+
+
+class FeedbackForm(forms.ModelForm):
+    class Meta:
+        model = Feedback
+        fields = ['message']
+        widgets = {
+            
+            
+            'message': forms.Textarea(attrs={'place holder': 'please lets us know your feedback '})
+        }
+
         
