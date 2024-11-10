@@ -19,4 +19,5 @@ urlpatterns = [
     path('update_password/',auth_view.PasswordChangeView.as_view(template_name="update_password.html",success_url="home" ),name='update_password'),
     path('UserDashBoard/', UserDashBoard.as_view(), name='UserDashBoard'),
     path('ViewNotifications/', ViewNotifications.as_view(), name='ViewNotifications'),
+    path('SendFeedBack/', SendFeedBack.as_view(), name='SendFeedBack'),
 ]
