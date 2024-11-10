@@ -7,4 +7,5 @@ admin.site.register(Contact),
 admin.site.register(Feedback),
 admin.site.register(Subscription),
 admin.site.register(Notifications),
+admin.site.register(FAQS),
 
