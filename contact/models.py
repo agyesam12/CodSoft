@@ -103,6 +103,20 @@ class Subscription(models.Model):
         return f"{self.email}"
 
 
+class FAQS(models.Model):
+    user = models.ForeignKey(User,on_delete=models.PROTECT)
+    question = models.CharField(max_length=200, null=True)
+    answer = models.CharField(max_length=200,null=True,blank=True)
+    date_asked = models.DateTimeField(auto_now_add=True)
+    date_answered = models.DateTimeField(auto_now=True,null=True)
+
+    def __str__(self):
+        return f"{self.question} -- {self.request.user.username}"
+    
+    class Meta:
+        ordering = ['date_asked']
+
+
 def create_notification(sender, instance, created, **kwargs):
     if created:
         notification_message = ""
