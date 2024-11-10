@@ -20,4 +20,5 @@ urlpatterns = [
     path('UserDashBoard/', UserDashBoard.as_view(), name='UserDashBoard'),
     path('ViewNotifications/', ViewNotifications.as_view(), name='ViewNotifications'),
     path('SendFeedBack/', SendFeedBack.as_view(), name='SendFeedBack'),
+    path('AskQuestion/', AskQuestion.as_view(), name='AskQuestion'),
 ]
