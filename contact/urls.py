@@ -10,6 +10,7 @@ urlpatterns = [
     path('signup/',views.signup, name='signup'),
     path('about/',views.about, name='about'),
     path('signout/',views.signout, name='signout'),
+    path('AskQuestion/', AskQuestion.as_view(), name='AskQuestion'),
     path('CreateContact/',CreateContact.as_view(), name='CreateContact'),
     path('ViewContacts/',ViewContacts.as_view(), name='ViewContacts'),
     path('DeleteContact/<str:pk>',DeleteContact.as_view(), name='DeleteContact'),
@@ -20,5 +21,5 @@ urlpatterns = [
     path('UserDashBoard/', UserDashBoard.as_view(), name='UserDashBoard'),
     path('ViewNotifications/', ViewNotifications.as_view(), name='ViewNotifications'),
     path('SendFeedBack/', SendFeedBack.as_view(), name='SendFeedBack'),
-    path('AskQuestion/', AskQuestion.as_view(), name='AskQuestion'),
+    
 ]
