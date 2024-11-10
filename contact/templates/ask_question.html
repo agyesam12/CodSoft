@@ -1,0 +1,29 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<section id="view-questions" class="unique-view-questions">
+    <h1>Frequently Asked Questions</h1>
+    <ul>
+        {% for faq in faqs %}
+            <li>
+                <strong>{{ faq.question }}</strong><br>
+                {% if faq.answer %}
+                    {{ faq.answer }}
+                {% else %}
+                    <em>This question hasn't been answered yet. Please check back later.</em>
+                {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</section>
+
+<section id="ask-question">
+    <h2>Ask a Question</h2>
+    <form method="post" action="{% url 'AskQuestion' %}">
+        {% csrf_token %}
+        <label for="question">Your Question:</label>
+        <textarea id="question" name="question" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</section>
+{% endblock %}
