@@ -205,6 +205,7 @@ class UserDashBoard(LoginRequiredMixin,View):
                 phone_number=phone_number,
                 message=message
             )
+            messages.success(request,f"You have successfully added a new contact {request.user.username}")
         return redirect(request.META.get("HTTP_REFERER"))
     
 
