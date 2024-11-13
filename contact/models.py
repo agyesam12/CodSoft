@@ -30,6 +30,12 @@ NOTIFY = (
     ('info','info')
 )
 
+CONTACTOPTIONS =(
+    ('phone','Phone'),
+    ('sim','Sim'),
+    ('email','Email')
+)
+
 
 
 
@@ -68,6 +74,8 @@ class Contact(models.Model):
     phone_number = models.CharField(max_length=250, null=True)
     message = models.TextField(blank=False, null=True)
     created_at = models.DateTimeField(auto_now_add=True, null=True)
+    save_to = models.CharField(max_length=250, null=True, choices=CONTACTOPTIONS,default="phone")
+    has_whatsapp = models.BooleanField(default=False)
     
 
     def __str__(self):
